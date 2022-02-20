@@ -23,7 +23,8 @@ const GamePiece = ({ name = '', clicked }) => {
 
   return (
     <GamePieceStyled onClick={ handleClick }>
-      <img src={`./assets/${name}.png`} alt="" width="80px"/>
+      imagen
+     {/* <img src={`./assets/${name}.png`} alt="" width="80px"/> */}
     </GamePieceStyled>
   )
 }
