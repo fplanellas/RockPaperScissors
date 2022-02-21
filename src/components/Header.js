@@ -11,23 +11,21 @@ const HeaderStyled = styled.div`
         font-size: 20px;
         margin-top: 6px;
     }
-`
+`;
 
 const Header = () => {
 
-  return (         
-      <HeaderStyled>
-          <div>
-              <h1>
-                  Rock Paper Scissors    
-              </h1>
+    return (
+        <HeaderStyled>
+            <div>
+                <h1>
+                    Rock Paper Scissors
+                </h1>
+                <Score />
+            </div>
+        </HeaderStyled>
+    );
+};
 
-              <Score />
-
-          </div>                           
-      </HeaderStyled>    
-  )
-}
-
-export default Header
+export default Header;
 

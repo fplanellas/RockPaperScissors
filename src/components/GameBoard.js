@@ -31,7 +31,7 @@ const GameBoardStyled = styled.div`
       margin-top: 10px;
       text-transform: uppercase;
   }
-`
+`;
 
 const GameBoard = () => {
 
@@ -47,51 +47,51 @@ const GameBoard = () => {
         setUserPlaying(false);
         setResults('');
         setShowResults(false);
-    }
+    };
 
     const botRandomChoice = (min, max) => {
-            return Math.floor(Math.random() * (max - min)) + min;
-    }
+        return Math.floor(Math.random() * (max - min)) + min;
+    };
 
     const fortune = (choose, botChoose) => {
-            
-        if( choose === botChoose ) {
+
+        if (choose === botChoose) {
             return "It's a tie";
-        };
-        
-        if(choose === 'paper' ){		
-			if ( botChoose === 'rock') {
+        }
+
+        if (choose === 'paper') {
+            if (botChoose === 'rock') {
                 return 'You win';
-			}			
-			if ( botChoose === 'scissors') {
+            }
+            if (botChoose === 'scissors') {
                 return 'You lose';
-			}
-		};
-		
-		if(choose === 'rock' ){
-			if ( botChoose === 'paper') {
+            }
+        }
+
+        if (choose === 'rock') {
+            if (botChoose === 'paper') {
                 return 'You lose';
-			}				
-			if ( botChoose === 'scissors') {
+            }
+            if (botChoose === 'scissors') {
                 return 'You win';
-			}
-		};
-		
-		if(choose === 'scissors' ){
-			if ( botChoose === 'paper') {
+            }
+        }
+
+        if (choose === 'scissors') {
+            if (botChoose === 'paper') {
                 return 'You win';
-			}			
-			if ( botChoose === 'rock') {
+            }
+            if (botChoose === 'rock') {
                 return 'You lose';
-			}
-		};	
+            }
+        }
     };
-    
+
     const elements = [
         'rock',
         'scissors',
         'paper'
-    ]
+    ];
 
     const launchBotChoose = () => {
         return new Promise((resolve, reject) => {
@@ -103,65 +103,65 @@ const GameBoard = () => {
                 setBotChose(choose);
             }, 100);
 
-            setTimeout(() => {   
-                clearInterval(interval);            
-                resolve(choose);  
-                setShowResults(true);        
+            setTimeout(() => {
+                clearInterval(interval);
+                resolve(choose);
+                setShowResults(true);
             }, 2000);
 
-            
+
         });
     };
 
-    const clicked = async(name) => {
+    const clicked = async (name) => {
         setShowResults(false);
         setUserPlaying(true);
         setChose(name);
         const bot = await launchBotChoose();
         const results = fortune(name, bot);
         setResults(results);
-        
+
         if (results === 'You win') {
-            setScore(score +1);
-        }             
+            setScore(score + 1);
+        }
     };
 
-  return (
-    <div>
-        {
-            gameB === false && (
-                <GameBoardStyled userPlaying={ userPlaying }>
-                {
-                    !userPlaying ? (
-                        <>
-                            <GamePiece name="rock" clicked={ clicked }/>
-                            <GamePiece name="scissors" clicked={ clicked } />
-                            <GamePiece name="paper" clicked={ clicked } />
-                        </>
-                    ) : (
-                        <> 
-                            <div>
-                                <GamePiece name={choose} />
-                                <p>You choose</p>
-                            </div>
-                            <div>
-                                <GamePiece name={botChoose} />
-                                <p>Bot choose</p>
-                            </div>
-                            <div className= {`${ showResults === false ? 'none' : 'result' }`}>
-                                <h2>{results}</h2>
-                                <button onClick={ handlePlayAgain }>
-                                    Play again
-                                </button>                           
-                            </div>
-                        </>                    
-                    )
-                }           
-                </GameBoardStyled>
-            )
-        }       
-    </div>
-  )
-}
+    return (
+        <div>
+            {
+                gameB === false && (
+                    <GameBoardStyled userPlaying={userPlaying}>
+                        {
+                            !userPlaying ? (
+                                <>
+                                    <GamePiece name="rock" clicked={clicked} />
+                                    <GamePiece name="scissors" clicked={clicked} />
+                                    <GamePiece name="paper" clicked={clicked} />
+                                </>
+                            ) : (
+                                <>
+                                    <div>
+                                        <GamePiece name={choose} />
+                                        <p>You choose</p>
+                                    </div>
+                                    <div>
+                                        <GamePiece name={botChoose} />
+                                        <p>Bot choose</p>
+                                    </div>
+                                    <div className={`${showResults === false ? 'none' : 'result'}`}>
+                                        <h2>{results}</h2>
+                                        <button onClick={handlePlayAgain}>
+                                            Play again
+                                        </button>
+                                    </div>
+                                </>
+                            )
+                        }
+                    </GameBoardStyled>
+                )
+            }
+        </div>
+    );
+};
 
-export default GameBoard
+export default GameBoard;

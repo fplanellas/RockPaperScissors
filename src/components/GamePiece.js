@@ -11,21 +11,21 @@ const GamePieceStyled = styled.div`
     align-items: center;
     background: silver;
     cursor: pointer;
-`
+`;
 
 const GamePiece = ({ name = '', clicked }) => {
- 
+
     const handleClick = () => {
         if (clicked) {
             clicked(name);
-        };      
+        }
     };
 
-  return (
-    <GamePieceStyled onClick={ handleClick }>
-     <img src={`./assets/${name}.png`} alt="" width="80px"/>
-    </GamePieceStyled>
-  )
-}
+    return (
+        <GamePieceStyled onClick={handleClick}>
+            <img src={`./assets/${name}.png`} alt="" width="80px" />
+        </GamePieceStyled>
+    );
+};
 
-export default GamePiece
+export default GamePiece;

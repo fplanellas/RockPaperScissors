@@ -82,120 +82,120 @@ const ScoreStyled = styled.div`
        top: 14px;
        cursor: pointer;
    }
-` 
-    const init = () => {
-            return JSON.parse(localStorage.getItem('players')) || [];
-    };
-  
-    const Score = () => {
-        
-        const { score, setScore } = useContext(ScoreContex);
-        const [ players, dispatch ] = useReducer(playerReducer, [], init);
-        const [ userNaming, setUserNaming ] = useState(false);
-        const { gameB, setGameB } = useContext(GameBoardContex);
-        const { userPlaying, setUserPlaying } = useContext(GameBoardInit);
+`;
+const init = () => {
+    return JSON.parse(localStorage.getItem('players')) || [];
+};
 
-        const [ { description }, handleInputChange, reset ] = useForm({
-            description: ''
-        });
+const Score = () => {
 
-        useEffect( () => {
-            localStorage.setItem('players', JSON.stringify( players ))
-        }, [players] ) ;
+    const { score, setScore } = useContext(ScoreContex);
+    const [players, dispatch] = useReducer(playerReducer, [], init);
+    const [userNaming, setUserNaming] = useState(false);
+    const { gameB, setGameB } = useContext(GameBoardContex);
+    const { userPlaying, setUserPlaying } = useContext(GameBoardInit);
 
-        const handleOut = (player) => {
-            const action = {
-                type: 'score',
-                payload: player.id,
-                score: player.score + score
-            };
+    const [{ description }, handleInputChange, reset] = useForm({
+        description: ''
+    });
 
-            dispatch( action );
-            setUserNaming(false);
-            setGameB(true);
-            setUserPlaying(false);
+    useEffect(() => {
+        localStorage.setItem('players', JSON.stringify(players));
+    }, [players]);
+
+    const handleOut = (player) => {
+        const action = {
+            type: 'score',
+            payload: player.id,
+            score: player.score + score
         };
 
-        const handleSubmit = (e) => {
-            e.preventDefault();
-       
-            if ( description.trim().length <= 1 ) {
-                return;
-            }
-    
-            const newPlayer = {
-                id: description,
-                name: description,
-                score: 0
-            };
-    
-            const action = {
-                type: 'add',
-                payload: newPlayer
-            };
-            
-            const adding = action.payload;
-            const elementAdded = players.find(element => element.id === action.payload.id);
-            setScore(score - score);
-            
-            setUserNaming(true);
-            setGameB(false);  
+        dispatch(action);
+        setUserNaming(false);
+        setGameB(true);
+        setUserPlaying(false);
+    };
 
-            if (!elementAdded) {
-                dispatch( action );               
-                window.pan = adding;                           
-            }
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
-            if (elementAdded) {              
-                window.pan = elementAdded;
-            }
-            
-            reset();
+        if (description.trim().length <= 1) {
+            return;
         }
-        
+
+        const newPlayer = {
+            id: description,
+            name: description,
+            score: 0
+        };
+
+        const action = {
+            type: 'add',
+            payload: newPlayer
+        };
+
+        const adding = action.payload;
+        const elementAdded = players.find(element => element.id === action.payload.id);
+        setScore(score - score);
+
+        setUserNaming(true);
+        setGameB(false);
+
+        if (!elementAdded) {
+            dispatch(action);
+            window.pan = adding;
+        }
+
+        if (elementAdded) {
+            window.pan = elementAdded;
+        }
+
+        reset();
+    };
+
     let painting = window.pan;
-  
+
     return (
-        <ScoreStyled> 
+        <ScoreStyled>
             <div>
                 {
-                  userNaming === true ? (
-                    <div className='container-score-screen'> 
-                        <div className='save-back'> 
-                            <img onClick={ () => handleOut(painting)} src="./assets/logout_white.svg"  alt="" width="24px"/> 
-                        </div>                                 
-                        {
-                            painting && (
-                                <div className='score-screen'>
-                                    <small>{painting.name}</small>
-                                    <small>{painting.score + score}</small>
-                                </div>                  
-                            )
-                        }                                            
-                    </div>
-                  ) : (
+                    userNaming === true ? (
+                        <div className='container-score-screen'>
+                            <div className='save-back'>
+                                <img onClick={() => handleOut(painting)} src="./assets/logout_white.svg" alt="" width="24px" />
+                            </div>
+                            {
+                                painting && (
+                                    <div className='score-screen'>
+                                        <small>{painting.name}</small>
+                                        <small>{painting.score + score}</small>
+                                    </div>
+                                )
+                            }
+                        </div>
+                    ) : (
                         <>
                             <h3>Create new player</h3>
-                            <form onSubmit={ handleSubmit }>
-                                    <input 
-                                        type='text'
-                                        name='description'
-                                        placeholder='player'
-                                        autoComplete='off'
-                                        value={ description }
-                                        onChange={ handleInputChange }
-                                    />
-                                    <button>
-                                        JOIN
-                                    </button>
+                            <form onSubmit={handleSubmit}>
+                                <input
+                                    type='text'
+                                    name='description'
+                                    placeholder='player'
+                                    autoComplete='off'
+                                    value={description}
+                                    onChange={handleInputChange}
+                                />
+                                <button>
+                                    JOIN
+                                </button>
                             </form>
                         </>
-                    
-                  )
-                }
-              </div>  
-        </ScoreStyled>
-    )
-}
 
-export default Score
+                    )
+                }
+            </div>
+        </ScoreStyled>
+    );
+};
+
+export default Score;

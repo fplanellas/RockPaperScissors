@@ -1,9 +1,10 @@
+import React from 'react';
 import GameScreen from "./components/GameScreen";
 
 const RockPapersScissors = () => {
-  return (
-    <GameScreen />
-  )
-}
+    return (
+        <GameScreen />
+    );
+};
 
-export default RockPapersScissors
+export default RockPapersScissors;

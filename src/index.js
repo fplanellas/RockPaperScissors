@@ -5,6 +5,6 @@ import RockPapersScissors from './RockPapersScissors';
 
 ReactDOM.render(
     <RockPapersScissors />, 
-  document.getElementById('root')
+    document.getElementById('root')
 );
 
