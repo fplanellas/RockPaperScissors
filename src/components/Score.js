@@ -175,7 +175,7 @@ const ScoreStyled = styled.div`
                     </div>
                   ) : (
                         <>
-                            <h3>Create new payer</h3>
+                            <h3>Create new player</h3>
                             <form onSubmit={ handleSubmit }>
                                     <input 
                                         type='text'
