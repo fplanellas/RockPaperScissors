@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`testing in main component GamePiece should be displayed correctly 1`] = `
+<styled.div
+  onClick={[Function]}
+>
+  <img
+    alt=""
+    src="./assets/.png"
+    width="80px"
+  />
+</styled.div>
+`;

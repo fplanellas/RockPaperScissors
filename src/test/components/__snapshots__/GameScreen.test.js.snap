@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`testing in component GameScreen should be displayed correctly 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "setUserPlaying": [Function],
+      "userPlaying": false,
+    }
+  }
+>
+  <ContextProvider
+    value={
+      Object {
+        "gameB": true,
+        "setGameB": [Function],
+      }
+    }
+  >
+    <ContextProvider
+      value={
+        Object {
+          "score": 0,
+          "setScore": [Function],
+        }
+      }
+    >
+      <styled.main>
+        <Wrapper>
+          <Header />
+          <GameBoard />
+        </Wrapper>
+      </styled.main>
+    </ContextProvider>
+  </ContextProvider>
+</ContextProvider>
+`;

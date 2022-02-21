@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`testing in main component RockPapersScissors should be displayed correctly 1`] = `<GameScreen />`;
