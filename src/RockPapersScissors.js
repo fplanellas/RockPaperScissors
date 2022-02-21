@@ -1,9 +1,8 @@
-import AppRouter from "./routes/AppRouter"
-
+import GameScreen from "./components/GameScreen";
 
 const RockPapersScissors = () => {
   return (
-    <AppRouter />
+    <GameScreen />
   )
 }
 
