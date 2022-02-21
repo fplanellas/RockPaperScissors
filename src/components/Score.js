@@ -162,7 +162,7 @@ const ScoreStyled = styled.div`
                   userNaming === true ? (
                     <div className='container-score-screen'> 
                         <div className='save-back'> 
-                            {/* <img onClick={ () => handleOut(painting)} src="./assets/logout_white.svg"  alt="" width="24px"/>  */}
+                            <img onClick={ () => handleOut(painting)} src="./assets/logout_white.svg"  alt="" width="24px"/> 
                         </div>                                 
                         {
                             painting && (
